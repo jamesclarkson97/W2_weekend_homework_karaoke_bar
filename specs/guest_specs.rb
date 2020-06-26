@@ -13,6 +13,7 @@ class TestGuest < Minitest::Test
         @guest3 = Guest.new("Mark")
         @guest4 = Guest.new("Sarah")
         @guest5 = Guest.new("Bob")
+        @guest6 = Guest.new("Lisa")
     end
 
     def test_has_name

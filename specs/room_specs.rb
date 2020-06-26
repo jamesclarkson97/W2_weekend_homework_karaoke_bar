@@ -16,6 +16,10 @@ class TestRoom < Minitest::Test
         @guest3 = Guest.new("Mark")
         @guest4 = Guest.new("Sarah")
         @guest5 = Guest.new("Bob")
+        @guest6 = Guest.new("Lisa")
+
+        @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
+
         @song1 = Song.new("Freebird", "Lynyrd Skynyrd")
         @song2 = Song.new("Rain on Me", "Lady Gaga")
         @song3 = Song.new("Rockstar", "Nickelback")
@@ -51,6 +55,14 @@ class TestRoom < Minitest::Test
     def test_add_song()
         assert_equal(1, @room2.add_song(@song5).size)
     end
+
+    def test_add_multiple_people()
+        for guest in @guests
+            @room1.check_in_guest(guest)
+        end
+        assert_equal(6, @room1.current_occupants.size) 
+    end
+
 
 
 end
