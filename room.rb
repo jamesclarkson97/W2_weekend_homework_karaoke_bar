@@ -5,11 +5,19 @@ class Room
         @name = name
         @occupancy_limit = occupancy_limit
         @current_occupants = []
-        @songs = {}
+        @songs = []
     end
 
     def check_in_guest(guest)
         return @current_occupants.push(guest)
+    end
+
+    def check_out_guest(guest)
+        for occupant in @current_occupants
+            if occupant == guest
+                @current_occupants.delete(occupant)
+            end
+        end
     end
 
 end
