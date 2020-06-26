@@ -20,4 +20,8 @@ class Room
         end
     end
 
+    def add_song(new_song)
+        return @songs.push(new_song)
+    end
+
 end
