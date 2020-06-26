@@ -19,5 +19,9 @@ class TestSong < Minitest::Test
         assert_equal("Rockstar", @song3.name)
     end
 
+    def test_has_artist
+        assert_equal("Harry Styles", @song4.artist())
+    end
+
     
 end

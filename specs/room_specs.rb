@@ -20,4 +20,12 @@ class TestRoom < Minitest::Test
         assert_equal(10, @room1.occupancy_limit())
     end
 
+    def test_get_current_occupants()
+        assert_equal(0, @room1.current_occupants.size)
+    end
+
+    def test_get_songs()
+        assert_equal(0, @room1.songs.size)
+    end
+
 end
