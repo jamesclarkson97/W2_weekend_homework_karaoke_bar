@@ -44,7 +44,8 @@ class TestRoom < Minitest::Test
     end
 
     def test_check_in_guest()
-        assert_equal(1, @room1.check_in_guest(@guest1).size)
+        @room1.check_in_guest(@guest1)
+        assert_equal(1, @room1.current_occupants.size)
     end
 
     def test_check_out_guest()
@@ -56,12 +57,24 @@ class TestRoom < Minitest::Test
         assert_equal(1, @room2.add_song(@song5).size)
     end
 
-    def test_add_multiple_people()
+    def test_add_multiple_people_pass()
         for guest in @guests
             @room1.check_in_guest(guest)
         end
         assert_equal(6, @room1.current_occupants.size) 
     end
+
+    def test_add_multiple_people_fail()
+        for guest in @guests
+            while @room2.check_in_guest(guest) != "Too many guests"
+                @room2.check_in_guest(guest)
+            end
+        end
+        assert_equal(5, @room2.current_occupants.size) 
+    end
+
+   
+
 
 
 

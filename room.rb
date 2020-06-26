@@ -9,7 +9,11 @@ class Room
     end
 
     def check_in_guest(guests)
-        return @current_occupants.push(guests)
+        if @current_occupants.size < @occupancy_limit
+            return @current_occupants.push(guests)
+        else
+            return "Too many guests"
+        end
     end
 
     def check_out_guest(guest)
