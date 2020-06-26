@@ -8,4 +8,8 @@ class Room
         @songs = {}
     end
 
+    def check_in_guest(guest)
+        return @current_occupants.push(guest)
+    end
+
 end
