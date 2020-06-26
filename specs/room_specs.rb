@@ -78,7 +78,11 @@ class TestRoom < Minitest::Test
         assert_equal(51.50, @room1.till)
     end
 
-    # def test_pay_entry_fee_pass()
+    def test_till_read()
+        assert_equal(50.00, @room2.till)
+    end
+
+    
    
 
 
