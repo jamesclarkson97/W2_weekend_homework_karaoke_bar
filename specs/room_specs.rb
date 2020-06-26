@@ -9,14 +9,14 @@ require_relative('../guest')
 class TestRoom < Minitest::Test
 
     def setup()
-        @room1 = Room.new("Python", 10)
-        @room2 = Room.new("Ruby", 5)
-        @guest1 = Guest.new("Jeff")
-        @guest2 = Guest.new("Anna")
-        @guest3 = Guest.new("Mark")
-        @guest4 = Guest.new("Sarah")
-        @guest5 = Guest.new("Bob")
-        @guest6 = Guest.new("Lisa")
+        @room1 = Room.new("Python", 10, 6.00)
+        @room2 = Room.new("Ruby", 5, 9.50)
+        @guest1 = Guest.new("Jeff", 20.00)
+        @guest2 = Guest.new("Anna", 15.00)
+        @guest3 = Guest.new("Mark", 23.00)
+        @guest4 = Guest.new("Sarah", 50.00)
+        @guest5 = Guest.new("Bob", 12.34)
+        @guest6 = Guest.new("Lisa", 35.50)
 
         @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
 
@@ -73,6 +73,12 @@ class TestRoom < Minitest::Test
         assert_equal(5, @room2.current_occupants.size) 
     end
 
+    def test_increase_till()
+        @room1.increase_till(1.50)
+        assert_equal(51.50, @room1.till)
+    end
+
+    # def test_pay_entry_fee_pass()
    
 
 
