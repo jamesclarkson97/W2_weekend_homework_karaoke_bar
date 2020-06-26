@@ -11,8 +11,10 @@ class Guest
     end
 
     def pay_entry_fee(entry_fee, room)
-        remove_cash(entry_fee)
-        room.increase_till(entry_fee)
+        if self.money >= entry_fee
+            remove_cash(entry_fee)
+            room.increase_till(entry_fee)
+        end
     end
 
 

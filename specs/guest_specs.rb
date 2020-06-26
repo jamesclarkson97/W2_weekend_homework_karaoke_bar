@@ -13,7 +13,7 @@ class TestGuest < Minitest::Test
 
         @guest1 = Guest.new("Jeff", 20.00)
         @guest2 = Guest.new("Anna", 15.00)
-        @guest3 = Guest.new("Mark", 23.00)
+        @guest3 = Guest.new("Mark", 7.00)
         @guest4 = Guest.new("Sarah", 50.00)
         @guest5 = Guest.new("Bob", 12.34)
         @guest6 = Guest.new("Lisa", 35.50)
@@ -33,9 +33,15 @@ class TestGuest < Minitest::Test
     end
 
     def test_pay_entry_fee_pass()
-        @guest1.pay_entry_fee(@room1.entry_fee, @room1)
-        assert_equal(14.00, @guest1.money())
+        @guest3.pay_entry_fee(@room1.entry_fee, @room1)
+        assert_equal(1.00, @guest3.money())
         assert_equal(56.00, @room1.till())
+    end
+
+    def test_pay_entry_fee_fail()
+        @guest3.pay_entry_fee(@room2.entry_fee, @room2)
+        assert_equal(7.00, @guest3.money())
+        assert_equal(50.00, @room2.till())
     end
 
 
