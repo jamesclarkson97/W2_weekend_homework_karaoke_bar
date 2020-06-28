@@ -12,10 +12,19 @@ class Guest
     end
 
     def pay_entry_fee(entry_fee, room)
-        if self.money >= entry_fee
+        if @money >= entry_fee
             remove_cash(entry_fee)
             room.increase_till(entry_fee)
         end
+    end
+
+    def check_for_favourite_song(room)
+        for song in room.songs
+            if @favourite_song == song.name
+                return "Whoo! This my jam"
+            end
+        end
+        return "This playlist sucks"
     end
 
 

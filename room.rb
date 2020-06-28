@@ -30,7 +30,7 @@ class Room
         for new_song in new_songs
             add_song(new_song)
         end
-        return @songs
+        # return @songs
     end
 
     def increase_till(amount)

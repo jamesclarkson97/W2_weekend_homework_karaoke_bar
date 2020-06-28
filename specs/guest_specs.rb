@@ -4,6 +4,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../guest')
 require_relative('../room')
+require_relative('../song')
 
 class TestGuest < Minitest::Test
 
@@ -19,6 +20,14 @@ class TestGuest < Minitest::Test
         @guest6 = Guest.new("Lucy", 35.50, "Enter Sandman")
 
         @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
+
+        @song1 = Song.new("Freebird", "Lynyrd Skynyrd")
+        @song2 = Song.new("Rain on Me", "Lady Gaga")
+        @song3 = Song.new("Rockstar", "Nickelback")
+        @song4 = Song.new("Watermellon Sugar", "Harry Styles")
+        @song5 = Song.new("Always Look on the Bright Side of Life", "Monty Python")
+
+        @songs = [@song1, @song2, @song3, @song4, @song5]
     end
 
     def test_has_name
@@ -46,7 +55,16 @@ class TestGuest < Minitest::Test
         assert_equal(50.00, @room2.till())
     end
 
-    def test_favourite_song()
+    def test_favourite_song_pass()
+        @room1.add_songs(@songs)
+        assert_equal("Whoo! This my jam", @guest3.check_for_favourite_song(@room1))
+    end
+
+    def test_favourite_song_fail()
+        @room1.add_songs(@songs)
+        assert_equal("This playlist sucks", @guest1.check_for_favourite_song(@room1))
+    end
+
 
 
 
