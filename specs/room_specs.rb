@@ -26,6 +26,8 @@ class TestRoom < Minitest::Test
         @song3 = Song.new("Rockstar", "Nickelback")
         @song4 = Song.new("Watermellon Sugar", "Harry Styles")
         @song5 = Song.new("Always Look on the Bright Side of Life", "Monty Python")
+
+        @songs = [@song1, @song2, @song3, @song4, @song5]
     end
 
     def test_has_name()
@@ -57,6 +59,10 @@ class TestRoom < Minitest::Test
 
     def test_add_song()
         assert_equal(1, @room2.add_song(@song5).size)
+    end
+
+    def test_add_all_songs()
+        assert_equal(5, @room1.add_songs(@songs).size)
     end
 
     def test_add_multiple_people_pass()

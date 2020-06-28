@@ -46,7 +46,7 @@ class TestGuest < Minitest::Test
         assert_equal(50.00, @room2.till())
     end
 
-    # def test_favourite_song()
+    def test_favourite_song()
 
 
 

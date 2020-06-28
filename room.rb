@@ -22,8 +22,15 @@ class Room
         end
     end
 
-    def add_song(new_song)
-        return @songs.push(new_song)
+    def add_song(new_song)  
+        @songs.push(new_song)
+    end
+
+    def add_songs(new_songs)
+        for new_song in new_songs
+            add_song(new_song)
+        end
+        return @songs
     end
 
     def increase_till(amount)
