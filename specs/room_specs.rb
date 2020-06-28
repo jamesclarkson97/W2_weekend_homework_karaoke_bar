@@ -11,12 +11,13 @@ class TestRoom < Minitest::Test
     def setup()
         @room1 = Room.new("Python", 10, 6.00)
         @room2 = Room.new("Ruby", 5, 9.50)
-        @guest1 = Guest.new("Jeff", 20.00)
-        @guest2 = Guest.new("Anna", 15.00)
-        @guest3 = Guest.new("Mark", 23.00)
-        @guest4 = Guest.new("Sarah", 50.00)
-        @guest5 = Guest.new("Bob", 12.34)
-        @guest6 = Guest.new("Lisa", 35.50)
+
+        @guest1 = Guest.new("Jeff", 20.00, "Lateralus")
+        @guest2 = Guest.new("Anna", 15.00, "Rockstar")
+        @guest3 = Guest.new("Mark", 23.00, "Rain on Me")
+        @guest4 = Guest.new("Sarah", 50.00, "Freebird")
+        @guest5 = Guest.new("Bob", 12.34, "Shape of You")
+        @guest6 = Guest.new("Lucy", 35.50, "Enter Sandman")
 
         @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
 
@@ -49,7 +50,8 @@ class TestRoom < Minitest::Test
     end
 
     def test_check_out_guest()
-        assert_equal(1, @room1.check_in_guest(@guest1).size)
+        @room1.check_in_guest(@guest1).size
+        @room1.current_occupants.size
         assert_equal(0, @room1.check_out_guest(@guest1).size)
     end
 
@@ -66,12 +68,13 @@ class TestRoom < Minitest::Test
 
     def test_add_multiple_people_fail()
         for guest in @guests
-            while @room2.check_in_guest(guest) != "Too many guests"
+            if @room2.check_availability() == "Good to go"
                 @room2.check_in_guest(guest)
             end
         end
-        assert_equal(5, @room2.current_occupants.size) 
+        assert_equal([@guest1, @guest2, @guest3, @guest4, @guest5], @room2.current_occupants) 
     end
+
 
     def test_increase_till()
         @room1.increase_till(1.50)
@@ -81,11 +84,5 @@ class TestRoom < Minitest::Test
     def test_till_read()
         assert_equal(50.00, @room2.till)
     end
-
-    
-   
-
-
-
 
 end

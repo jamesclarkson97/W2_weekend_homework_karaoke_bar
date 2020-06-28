@@ -11,11 +11,7 @@ class Room
     end
 
     def check_in_guest(guests)
-        if @current_occupants.size < @occupancy_limit
-            return @current_occupants.push(guests)
-        else
-            return "Too many guests"
-        end
+        return @current_occupants.push(guests)  
     end
 
     def check_out_guest(guest)
@@ -34,4 +30,13 @@ class Room
         @till += amount
     end
 
+    def check_availability()
+        if @current_occupants.size < @occupancy_limit
+            return "Good to go"
+        else
+            return "Too many guests"
+        end
+    end
+
+ 
 end

@@ -11,12 +11,14 @@ class TestGuest < Minitest::Test
         @room1 = Room.new("Python", 10, 6.00)
         @room2 = Room.new("Ruby", 5, 9.50)
 
-        @guest1 = Guest.new("Jeff", 20.00)
-        @guest2 = Guest.new("Anna", 15.00)
-        @guest3 = Guest.new("Mark", 7.00)
-        @guest4 = Guest.new("Sarah", 50.00)
-        @guest5 = Guest.new("Bob", 12.34)
-        @guest6 = Guest.new("Lisa", 35.50)
+        @guest1 = Guest.new("Jeff", 20.00, "Lateralus")
+        @guest2 = Guest.new("Anna", 15.00, "Rockstar")
+        @guest3 = Guest.new("Mark", 7.00, "Rain on Me")
+        @guest4 = Guest.new("Sarah", 50.00, "Freebird")
+        @guest5 = Guest.new("Bob", 12.34, "Shape of You")
+        @guest6 = Guest.new("Lucy", 35.50, "Enter Sandman")
+
+        @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
     end
 
     def test_has_name
@@ -43,6 +45,9 @@ class TestGuest < Minitest::Test
         assert_equal(7.00, @guest3.money())
         assert_equal(50.00, @room2.till())
     end
+
+    # def test_favourite_song()
+
 
 
 end
